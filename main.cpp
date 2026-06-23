@@ -31,7 +31,13 @@ int main() {
     configurarCuposIniciales(miClase);
     
     int opcion;
-    
+    do {
+        mostrarMenuOpciones();
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+        cin.ignore();
+        switch(opcion) {
+
 // ==========================================
 // DESARROLLO DE LAS FUNCIONES
 // ==========================================
@@ -47,4 +53,12 @@ void configurarCuposIniciales(ClaseOnline &clase) {
     } while (cantidad <= 0);
     clase.cupoMaximo = cantidad;
     cout << "Sistema inicializado con un limite de " << clase.cupoMaximo << " cupos.\n";
+}
+void mostrarMenuOpciones() {
+    cout << "\n=== GESTOR DE RESERVAS PARA CLASES ONLINE ===\n";
+    cout << "1. Registrar estudiante\n";
+    cout << "2. Dar de baja estudiante\n";
+    cout << "3. Consultar disponibilidad de cupos\n";
+    cout << "4. Listar alumnos inscritos\n";
+    cout << "5. Salir\n";
 }
