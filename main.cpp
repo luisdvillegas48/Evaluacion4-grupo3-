@@ -37,6 +37,8 @@ int main() {
         cin >> opcion;
         cin.ignore();
         switch(opcion) {
+case 1: registrarNuevoEstudiante(miClase); 
+break;
 
 // ==========================================
 // DESARROLLO DE LAS FUNCIONES
@@ -61,4 +63,19 @@ void mostrarMenuOpciones() {
     cout << "3. Consultar disponibilidad de cupos\n";
     cout << "4. Listar alumnos inscritos\n";
     cout << "5. Salir\n";
+}
+void registrarNuevoEstudiante(ClaseOnline &clase) {
+    if (!verificarCupoDisponible(clase)) {
+        cout << "Error: No se puede registrar. Se ha alcanzado el maximo de cupos permitidos.\n";
+        return;
+    }
+    
+    Estudiante nuevoAlumno;
+    cout << "Ingrese la cedula del estudiante: ";
+    getline(cin, nuevoAlumno.cedula);
+    cout << "Ingrese el nombre del estudiante: ";
+    getline(cin, nuevoAlumno.nombre);
+    
+    clase.inscritos.push_back(nuevoAlumno);
+    cout << "Estudiante registrado exitosamente.\n";
 }
