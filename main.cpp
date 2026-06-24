@@ -79,3 +79,28 @@ void registrarNuevoEstudiante(ClaseOnline &clase) {
     clase.inscritos.push_back(nuevoAlumno);
     cout << "Estudiante registrado exitosamente.\n";
 }
+case 2: darDeBajaEstudiante(miClase);
+break;
+
+void darDeBajaEstudiante(ClaseOnline &clase) {
+    if (clase.inscritos.empty()) {
+        cout << "El sistema no registra estudiantes inscritos actualmente.\n";
+        return;
+    }
+    
+    string cedulaBuscar;
+    cout << "Ingrese la cedula del estudiante a dar de baja: ";
+    getline(cin, cedulaBuscar);
+    
+    bool encontrado = false;
+    for (size_t i = 0; i < clase.inscritos.size(); ++i) {
+        if (clase.inscritos[i].cedula == cedulaBuscar) {
+            clase.inscritos.erase(clase.inscritos.begin() + i);
+            cout << "Reserva cancelada y cupo liberado correctamente.\n";
+            encontrado = true;
+            break;
+        }
+    }
+    if (!encontrado) cout << "No se encontro la cedula especificada.\n";
+}
+
